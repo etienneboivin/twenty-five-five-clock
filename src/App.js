@@ -11,8 +11,10 @@ class TimerHeader extends React.Component {
 
   render() {
     return (
-      <div id="break-label">Break Length</div>
-      <div id="session-label">Session Length</div>
+      <>
+        <div id="break-label">Break Length</div>
+        <div id="session-label">Session Length</div>
+      </>
     )
   }
 }
