@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { IconName } from "react-icons/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './App.css';
 
 function TimerHeader() {
   // TODO State hook goes here
   return (
     <>
-      <i class="fa fa-arrow-down"></i>
+      <FontAwesomeIcon icon="fa-arrow-down" />
       <div id="break-label">Break Length</div>
-      <i class="fa fa-arrow-up"></i>
-      <i class="fa fa-arrow-down"></i>
+      <FontAwesomeIcon icon="fa-arrow-up" />
+      <FontAwesomeIcon icon="fa-arrow-down" />
       <div id="session-label">Session Length</div>
-      <i class="fa fa-arrow-up"></i>
+      <FontAwesomeIcon icon="fa-arrow-up" />
     </>
   )
 }
