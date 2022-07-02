@@ -51,13 +51,12 @@ class Timer extends React.Component {
     this.state = {
       breakLength: 5,
       seshLength: 25,
-      pause: true,
-
+      pause: true
     }
-    this.timeDisplay = this.timeDisplay.bind(this);
+    this.timeDisplay = this.timeDisplay.bind(this)
   }
 
-  function timeDisplay() {
+  function timeDisplay = () {
     setInterval(() => {
       this.setState({seshLength: this.state.seshLength - 1})
     }, 1000)
