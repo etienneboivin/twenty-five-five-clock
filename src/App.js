@@ -54,16 +54,16 @@ class Timer extends React.Component {
       pause: true
     }
     this.timeDisplay = this.timeDisplay.bind(this)
-    this.myPause = this.myPause.bind(this)
+    // this.myPause = this.myPause.bind(this)
   }
 
   timeDisplay = setInterval(() => {
       this.setState({seshLength: this.state.seshLength - 1})
     }, 1000)
 
-  myPause() {
+/*  myPause() {
     clearInterval(this.timeDisplay)
-  }
+  } */
 
   render () {
       return (
@@ -79,7 +79,7 @@ class Timer extends React.Component {
           <button value="play" onClick={this.timeDisplay}>
             <FontAwesomeIcon icon="fa-play" />
           </button>
-          <button value="pause" onClick={() => {this.myPause}}>
+          <button value="pause" onClick={console.log("pause")}>
             <FontAwesomeIcon icon="fa-pause" />
           </button>
           <button value="reset" onClick={() => {console.log("reset")}}>
