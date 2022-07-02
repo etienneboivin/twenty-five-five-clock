@@ -20,9 +20,9 @@ class TimerLengthControl extends React.Component {
 
   onClick = () => {
     if(this.state.sign === "+" && this.state.count !== 60) {
-      setState({count: count + 1});
+      this.setState({count: this.state.count + 1});
     } else if (this.state.sign === "-" && this.state.count !== 1) {
-      setState({count: count - 1});
+      this.setState({count: this.state.count - 1});
     }
   }
 
