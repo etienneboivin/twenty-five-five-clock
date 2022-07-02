@@ -56,7 +56,7 @@ class Timer extends React.Component {
     this.timeDisplay = this.timeDisplay.bind(this)
   }
 
-  timeDisplay = () {
+  timeDisplay = () => {
     setInterval(() => {
       this.setState({seshLength: this.state.seshLength - 1})
     }, 1000)
