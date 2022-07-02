@@ -62,7 +62,7 @@ class Timer extends React.Component {
     }, 1000)
 
   myPause() {
-    clearInterval(timeDisplay)
+    clearInterval(this.timeDisplay)
   }
 
   render () {
