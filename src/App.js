@@ -68,5 +68,5 @@ class Timer extends React.Component {
   }
 }
 
-export default TimerLengthControl;
-export default Timer;
+export TimerLengthControl;
+export Timer;
