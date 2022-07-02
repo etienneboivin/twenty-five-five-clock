@@ -48,6 +48,8 @@ class Timer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      breakLength: 5,
+      seshLength: 25
     }
   }
 
@@ -57,10 +59,10 @@ class Timer extends React.Component {
           <div className="main-title">25 + 5 Clock</div>
           <TimerLengthControl
             title="Break Length"
-            length=5 />
+            length={this.state.breakLength} />
           <TimerLengthControl
             title="Session Length"
-            length=25 />
+            length={this.state.seshLength} />
         </>
     )
   }
