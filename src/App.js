@@ -26,10 +26,6 @@ class TimerLengthControl extends React.Component {
     }
   }
 
-  setBreakLength = () => {
-
-  }
-
   render() {
     return (
       <div>
@@ -69,3 +65,6 @@ class Timer extends React.Component {
     )
   }
 }
+
+export default TimerLengthControl;
+export default Timer;
