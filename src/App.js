@@ -31,11 +31,11 @@ class TimerLengthControl extends React.Component {
     return (
       <div>
         <div id="break-label">{this.props.title}</div>
-        <button value="-" onClick={this.onClick(e)}>
+        <button value="-" onClick={(e) => this.onClick(e)}>
           <FontAwesomeIcon icon="fa-arrow-down" />
         </button>
         {this.state.count}
-        <button value="+" onClick={this.onClick(e)}>
+        <button value="+" onClick={(e) => this.onClick(e)}>
           <FontAwesomeIcon icon="fa-arrow-up" />
         </button>
       </div>
