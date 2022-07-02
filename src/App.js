@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core"
-import {faArrowDown, faArrowUp} from "@fortawesome/free-solid-svg-icons"
+import {faArrowDown, faArrowUp, faPlay, faPause, faClockRotateLeft} from "@fortawesome/free-solid-svg-icons"
 import './App.css';
 
-library.add(faArrowDown, faArrowUp);
+library.add(faArrowDown, faArrowUp, faPlay, faPause, faClockRotateLeft);
 
 class TimerLengthControl extends React.Component {
   // Two buttons & a label. Two needed in the timer, one for session and one for breaks.
@@ -22,10 +22,8 @@ class TimerLengthControl extends React.Component {
   onClick = (e) => {
     if(e.target.value === "+" && this.state.count !== 60) {
       this.setState({count: this.state.count + 1});
-      console.log("Incremented to " + this.state.count)
     } else if (e.target.value === "-" && this.state.count !== 1) {
       this.setState({count: this.state.count - 1});
-      console.log("Decremented to " + this.state.count)
     }
   }
 
@@ -66,6 +64,16 @@ class Timer extends React.Component {
           <TimerLengthControl
             title="Session Length"
             length={this.state.seshLength} />
+          <div className="time-display">TIME GOES HERE</div>
+          <button value="play" onClick={}>
+            <FontAwesomeIcon icon="fa-play" />
+          </button>
+          <button value="pause" onClick={}>
+            <FontAwesomeIcon icon="fa-pause" />
+          </button>
+          <button value="reset" onClick={}>
+            <FontAwesomeIcon icon="fa-clock-rotate-left" />
+          </button>
         </>
     )
   }
