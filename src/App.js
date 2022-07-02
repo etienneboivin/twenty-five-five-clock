@@ -16,6 +16,7 @@ class TimerLengthControl extends React.Component {
     this.state = {
       count: this.props.length
     }
+    this.onClick = this.onClick.bind(this)
   }
 
   onClick = () => {
@@ -30,11 +31,11 @@ class TimerLengthControl extends React.Component {
     return (
       <div>
         <div id="break-label">{this.props.title}</div>
-        <button sign="-" onClick={this.props.onClick}>
+        <button sign="-" onClick={this.onClick}>
           <FontAwesomeIcon icon="fa-arrow-down" />
         </button>
         {this.state.count}
-        <button sign="+" onClick={() => this.props.onClick}>
+        <button sign="+" onClick={() => this.onClick}>
           <FontAwesomeIcon icon="fa-arrow-up" />
         </button>
       </div>
