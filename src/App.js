@@ -22,8 +22,10 @@ class TimerLengthControl extends React.Component {
   onClick = (e) => {
     if(e.target.value === "+" && this.state.count !== 60) {
       this.setState({count: this.state.count + 1});
+      console.log("Incremented to " + this.state.count)
     } else if (e.target.value === "-" && this.state.count !== 1) {
       this.setState({count: this.state.count - 1});
+      console.log("Decremented to " + this.state.count)
     }
   }
 
