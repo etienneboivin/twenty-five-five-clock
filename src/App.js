@@ -50,8 +50,17 @@ class Timer extends React.Component {
     super(props);
     this.state = {
       breakLength: 5,
-      seshLength: 25
+      seshLength: 25,
+      pause: true,
+
     }
+    this.timeDisplay = this.timeDisplay.bind(this);
+  }
+
+  function timeDisplay() {
+    setInterval(() => {
+      this.setState({seshLength: this.state.seshLength - 1})
+    }, 1000)
   }
 
   render () {
@@ -64,8 +73,8 @@ class Timer extends React.Component {
           <TimerLengthControl
             title="Session Length"
             length={this.state.seshLength} />
-          <div className="time-display">TIME GOES HERE</div>
-          <button value="play" onClick={() => {console.log("play")}}>
+          <div className="time-display">{this.state.seshLength}</div>
+          <button value="play" onClick={() => {}}>
             <FontAwesomeIcon icon="fa-play" />
           </button>
           <button value="pause" onClick={() => {console.log("pause")}}>
