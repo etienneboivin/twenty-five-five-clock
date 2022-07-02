@@ -19,10 +19,10 @@ class TimerLengthControl extends React.Component {
     this.onClick = this.onClick.bind(this)
   }
 
-  onClick = () => {
-    if(this.state.sign === "+" && this.state.count !== 60) {
+  onClick = (e) => {
+    if(e.target.value === "+" && this.state.count !== 60) {
       this.setState({count: this.state.count + 1});
-    } else if (this.state.sign === "-" && this.state.count !== 1) {
+    } else if (e.target.value === "-" && this.state.count !== 1) {
       this.setState({count: this.state.count - 1});
     }
   }
@@ -31,11 +31,11 @@ class TimerLengthControl extends React.Component {
     return (
       <div>
         <div id="break-label">{this.props.title}</div>
-        <button sign="-" onClick={this.onClick}>
+        <button value="-" onClick={this.onClick(e)}>
           <FontAwesomeIcon icon="fa-arrow-down" />
         </button>
         {this.state.count}
-        <button sign="+" onClick={() => this.onClick}>
+        <button value="+" onClick={this.onClick(e)}>
           <FontAwesomeIcon icon="fa-arrow-up" />
         </button>
       </div>
