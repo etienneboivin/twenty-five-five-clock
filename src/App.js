@@ -73,7 +73,7 @@ class Timer extends React.Component {
             title="Session Length"
             length={this.state.seshLength} />
           <div className="time-display">{this.state.seshLength}</div>
-          <button value="play" onClick={timeDisplay}>
+          <button value="play" onClick={this.timeDisplay}>
             <FontAwesomeIcon icon="fa-play" />
           </button>
           <button value="pause" onClick={() => {console.log("pause")}}>
