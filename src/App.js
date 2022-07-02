@@ -74,7 +74,7 @@ class Timer extends React.Component {
           <button value="play" onClick={this.timeDisplay}>
             <FontAwesomeIcon icon="fa-play" />
           </button>
-          <button value="pause" onClick={() => {clearInterval(timeDisplay)}}>
+          <button value="pause" onClick={() => {clearInterval(this.timeDisplay)}}>
             <FontAwesomeIcon icon="fa-pause" />
           </button>
           <button value="reset" onClick={() => {console.log("reset")}}>
