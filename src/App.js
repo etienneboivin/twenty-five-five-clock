@@ -65,13 +65,13 @@ class Timer extends React.Component {
             title="Session Length"
             length={this.state.seshLength} />
           <div className="time-display">TIME GOES HERE</div>
-          <button value="play" onClick={}>
+          <button value="play" onClick={() => {console.log("play")}}>
             <FontAwesomeIcon icon="fa-play" />
           </button>
-          <button value="pause" onClick={}>
+          <button value="pause" onClick={() => {console.log("pause")}}>
             <FontAwesomeIcon icon="fa-pause" />
           </button>
-          <button value="reset" onClick={}>
+          <button value="reset" onClick={() => {console.log("reset")}}>
             <FontAwesomeIcon icon="fa-clock-rotate-left" />
           </button>
         </>
