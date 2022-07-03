@@ -40,9 +40,9 @@ class Timer extends React.Component {
     super(props);
     this.state = {
       breakLength: 5,
-      currentBreakLength: 5,
       seshLength: 25,
-      currentSeshLength: 25,
+      seconds: 1500,
+      display: "25:00",
       pause: true,
       break: false,
     }
@@ -56,8 +56,7 @@ class Timer extends React.Component {
 
   breakClick = (e) => {
     if(e.target.value === "+" && this.state.breakLength !== 60) {
-      this.setState({breakLength: this.state.breakLength + 1,
-                    currentBreakLength: this.state.currentBreakLength + 1});
+      this.setState({breakLength: this.state.breakLength + 1});
     } else if (e.target.value === "-" && this.state.breakLength !== 1) {
       this.setState({count: this.state.breakLength - 1});
     }
@@ -66,17 +65,24 @@ class Timer extends React.Component {
   seshClick = (e) => {
     if(e.target.value === "+" && this.state.seshLength !== 60) {
       this.setState({seshLength: this.state.seshLength + 1,
-                    currentSeshLength: this.state.currentSeshLength + 1});
+                    timer: this.state.seconds + 60});
     } else if (e.target.value === "-" && this.state.seshLength !== 1) {
       this.setState({count: this.state.seshLength - 1});
     }
   }
 
+  timeDisplay = () => {
+    let min = Math.floor(this.state.seconds/60);
+    let sec = this.state.seconds % 60;
+    this.setState({display: (min < 10 ? '0' + min : min) + ':' + (sec < 10 ? '0' + sec : sec)})
+  }
+
   play = () => {
     this.setState({pause: false});
     timer = setInterval(() => {
-      this.setState({currentSeshLength: this.state.currentSeshLength - 1})
+      this.setState({seconds: this.state.seconds - 1}, this.timeDisplay)
     }, 1000)
+  }
 
   pause = () => {
     this.setState({pause: true});
@@ -86,20 +92,11 @@ class Timer extends React.Component {
   reset = () => {
     clearInterval(timer);
     this.setState({
-      currentBreakLength: this.state.breakLength,
-      currentSeshLength: this.state.seshLength,
+      seconds: this.state.seshLength * 60,
       pause: true,
-      break: false})
+      break: false}, this.timeDisplay)
   }
 
-  timeDisplay = (min, sec) => {
-    let timeStr = "";
-    let secStr = "";
-    if(sec < 10) {
-      secStr = "0" + sec;
-    }
-
-  }
 
   render () {
       return (
@@ -115,15 +112,11 @@ class Timer extends React.Component {
             lengthID="session-length"
             length={this.state.seshLength}
             handleClick={this.seshClick}/>
-          <div className="time-display">{this.state.currentSeshLength}</div>
+          <div className="time-display">{this.state.display}</div>
           <button value="play" onClick={this.play}>
             <FontAwesomeIcon icon="fa-play" />
           </button>
-<<<<<<< HEAD
-          <button value="pause" onClick={() => {console.log("pause")}}>
-=======
           <button value="pause" onClick={this.pause}>
->>>>>>> 2jul22
             <FontAwesomeIcon icon="fa-pause" />
           </button>
           <button value="reset" onClick={this.reset}>
