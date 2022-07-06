@@ -9,10 +9,7 @@ library.add(faArrowDown, faArrowUp, faPlay, faPause, faClockRotateLeft);
 
 var timer = null;
 
-class TimerLengthControl extends React.Component {
-  // Two buttons & a label. Two needed in the timer, one for session and one for breaks.
-  // props to be passed: Label (Title), initial length, button needs value
-  // buttons should not work if Timer is running
+export class TimerLengthControl extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -20,22 +17,23 @@ class TimerLengthControl extends React.Component {
   render() {
     return (
       <div>
-        <div id="break-label">{this.props.title}</div>
-        <button value="-" onClick={(e) => this.props.handleClick(e)}>
-          <FontAwesomeIcon icon="fa-arrow-down" />
-        </button>
-        {this.props.length}
-        <button value="+" onClick={(e) => this.props.handleClick(e)}>
-          <FontAwesomeIcon icon="fa-arrow-up" />
-        </button>
+        <div className="control-label">{this.props.title}
+        <div>
+          <button value="-" onClick={(e) => this.props.handleClick(e)}>
+            <FontAwesomeIcon icon="fa-arrow-down" size="2x"/>
+          </button>
+          {this.props.length}
+          <button value="+" onClick={(e) => this.props.handleClick(e)}>
+            <FontAwesomeIcon icon="fa-arrow-up" size="2x"/>
+          </button>
+        </div>
+        </div>
       </div>
     )
   }
 }
 
-class Timer extends React.Component {
-  // Contains title, two TimerLengthControl, and actual session/break display, pause/start/reset button
-  // will be passed timer length, whether on break or on session
+export class Timer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -130,32 +128,40 @@ class Timer extends React.Component {
 
   render () {
       return (
-        <>
-          <div className="main-title">25 + 5 Clock</div>
-          <TimerLengthControl
-            title="Break Length"
-            lengthID="break-length"
-            length={this.state.breakLength}
-            handleClick={this.breakClick} />
-          <TimerLengthControl
-            title="Session Length"
-            lengthID="session-length"
-            length={this.state.seshLength}
-            handleClick={this.seshClick}/>
-          <div className="timer-title">{this.state.break ? "Break" : "Session"}</div>
-          <div className="time-display">{this.state.display}</div>
-          <button value="play" onClick={this.play}>
-            <FontAwesomeIcon icon="fa-play" />
-          </button>
-          <button value="pause" onClick={this.pause}>
-            <FontAwesomeIcon icon="fa-pause" />
-          </button>
-          <button value="reset" onClick={this.reset}>
-            <FontAwesomeIcon icon="fa-clock-rotate-left" />
-          </button>
-        </>
+        <div id="container">
+          <div id="main-title">25 + 5 Clock</div>
+          <div className="length-control">
+            <div className="grid-child">
+              <TimerLengthControl
+                title="Break Length"
+                lengthID="break-length"
+                length={this.state.breakLength}
+                handleClick={this.breakClick} />
+            </div>
+            <div className="grid-child">
+              <TimerLengthControl
+                title="Session Length"
+                lengthID="session-length"
+                length={this.state.seshLength}
+                handleClick={this.seshClick}/>
+            </div>
+          </div>
+          <div className="time-display">
+            <div>{this.state.break ? "Break" : "Session"}</div>
+            <div>{this.state.display}</div>
+          </div>
+          <div id="buttons">
+            <button value="play" onClick={this.play}>
+              <FontAwesomeIcon icon="fa-play" size='2x'/>
+            </button>
+            <button value="pause" onClick={this.pause}>
+              <FontAwesomeIcon icon="fa-pause" size='2x'/>
+            </button>
+            <button value="reset" onClick={this.reset}>
+              <FontAwesomeIcon icon="fa-clock-rotate-left" size='2x'/>
+            </button>
+          </div>
+        </div>
     )
   }
 }
-
-export { TimerLengthControl, Timer };
